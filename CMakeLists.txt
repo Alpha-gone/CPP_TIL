@@ -16,4 +16,8 @@ add_executable(cpp_til Main.cpp
         module/chapter04/Animal.h
         module/chapter04/Date.cpp
         module/chapter04/Date.h
+        module/starcraft/Marine.cpp
+        module/starcraft/Marine.h
+        module/starcraft/StarCraft.cpp
+        module/starcraft/StarCraft.h
 )
