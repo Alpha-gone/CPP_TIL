@@ -6,32 +6,24 @@
 #include <iostream>
 #include "Marine.h"
 
-Marine::Marine() {
-    name_ = NULL;
-    hp_ = 50;
-    coord_x_ = 0;
-    coord_y_ = 0;
-    damage_ = 5;
-    is_dead_ = false;
+int Marine::totalMarineAmount = 0;
+
+Marine::Marine() : hp_(50), coord_x_(0), coord_y_(0), defaultDamage_(5), is_dead_(false){
+    totalMarineAmount++;
 }
 
-Marine::Marine(int x, int y) {
-    name_ = NULL;
-    hp_ = 50;
-    coord_x_ = x;
-    coord_y_ = y;
-    damage_ = 5;
-    is_dead_ = false;
+Marine::Marine(int x, int y) :  coord_x_(x), coord_y_(y), hp_(50), defaultDamage_(5), is_dead_(false){
+    totalMarineAmount++;
 }
 
-Marine::Marine(int x, int y, const char* name) {
-    name_ = new char[strlen(name) + 1];
-    strcpy(name_ , name);
-    hp_ = 50;
-    coord_x_ = x;
-    coord_y_ = y;
-    damage_ = 5;
-    is_dead_ = false;
+Marine::Marine(int x, int y, int defaultDamage) :  coord_x_(x), coord_y_(y), hp_(50),
+                                                    defaultDamage_(defaultDamage), is_dead_(false){
+    totalMarineAmount++;
+}
+
+
+Marine::~Marine(){
+    totalMarineAmount--;
 }
 
 void Marine::move(int x, int y) {
@@ -39,16 +31,24 @@ void Marine::move(int x, int y) {
     coord_y_ = y;
 }
 
-int Marine::attack() {return damage_;}
+int Marine::attack() const {return defaultDamage_;}
 
-void Marine::beAttacked(int damageEarn) {
+Marine& Marine::beAttacked(int damageEarn) {
     hp_ -= damageEarn;
 
     if (hp_ <= 0) is_dead_ = true;
+
+    return *this;
 }
 
 void Marine::showStat() {
-    std::cout << " *** Marine : " << name_ << " *** \n"
+//    std::cout << " *** Marine : " << name_ << " *** \n"
+    std::cout << " *** Marine *** \n"
                 << "Location: (" << coord_x_ << ", " << coord_y_ << ")\n"
-                << "HP: " << hp_ << std::endl;
+                << "HP: " << hp_ << "\n"
+                << "Total Marine Amount: " << totalMarineAmount << std::endl;
+}
+
+void Marine::showTotalMarine() {
+    std::cout << "Total Marine Amount: " << totalMarineAmount << "\n";
 }

@@ -20,4 +20,6 @@ add_executable(cpp_til Main.cpp
         module/starcraft/Marine.h
         module/starcraft/StarCraft.cpp
         module/starcraft/StarCraft.h
+        module/starcraft/PhotonCannon.cpp
+        module/starcraft/PhotonCannon.h
 )
