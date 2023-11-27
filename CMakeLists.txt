@@ -22,4 +22,6 @@ add_executable(cpp_til Main.cpp
         module/starcraft/StarCraft.h
         module/starcraft/PhotonCannon.cpp
         module/starcraft/PhotonCannon.h
+        module/chapter04/MyString.cpp
+        module/chapter04/MyString.h
 )
