@@ -36,6 +36,12 @@ class MyString {
         MyString& insert(int loc, char c);
 
         MyString& erase(int loc, int num);
+
+        const int find(int findFrom, MyString& str);
+        const int find(int findFrom, const char* str);
+        const int find(int findFrom, char c);
+
+        const int compare(const MyString& str);
 };
 
 

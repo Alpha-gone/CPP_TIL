@@ -150,3 +150,40 @@ MyString& MyString::erase(int loc, int num) {
     stringLength -= num;
     return *this;
 }
+
+const int MyString::find(int findFrom, MyString &str) {
+    int i, j;
+
+    if (str.stringLength == 0) return -1;
+
+    for (i = findFrom;  i<= stringLength - str.stringLength; i++) {
+        for (j = 0; j < str.stringLength; j++) {
+            if (stringContent[i + j] != str.stringContent[j]) break;
+        }
+
+        if (j == str.stringLength) return i;
+    }
+
+    return -1;
+}
+
+const int MyString::find(int findFrom, const char *str) {
+    MyString tmp(str);
+    return find(findFrom, tmp);
+}
+
+const int MyString::find(int findFrom, char c){
+    MyString tmp(c);
+    return find(findFrom, tmp);
+}
+
+const int MyString::compare(const MyString &str) {
+    for (int i = 0; i < std::min(stringLength, str.stringLength); i++) {
+        if (stringContent[i] > str.stringContent[i]) return 1;
+        else if (stringContent[i] < str.stringContent[i]) return -1;
+    }
+
+    if (stringLength == str.stringLength) return 0;
+    else if (stringLength > str.stringLength) return 1;
+    else return -1;
+}

@@ -9,20 +9,11 @@
 #include "module/chapter04/MyString.h"
 
 int main() {
-    MyString str("very long string");
-    MyString str2("<some string inserted between>");
-    str.reserve(30);
+    MyString str("this is a very very long string");
 
-    std::cout << "capacity : " << str.capacity() << "\n"
-                << "string length : " << str.getLength() << "\n";
-    str.println();
-
-    str.insert(5, str2);
-    str.println();
-
-    MyString str3("abcd");
-    str3.erase(1, 2);
-    str3.println();
-
+    std::cout << "Location of first <very> in the string : " << str.find(0, "very") << "\n"
+                << "Location of second <very> in the string : " << str.find(
+                                                                    str.find(0, "very") + 1,
+                                                                        "very");
     return 0;
 }
