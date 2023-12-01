@@ -6,6 +6,12 @@
 #include <cstring>
 #include "MyString.h"
 
+MyString::MyString(int capacity) {
+    stringContent = new char [capacity];
+    stringLength = 0;
+    memoryCapacity = capacity;
+}
+
 MyString::MyString(char c) {
     stringContent = new char [1];
     stringContent[0] = c;
@@ -95,7 +101,7 @@ void MyString::reserve(int size) {
 
 const char MyString::at(int index){
     if (stringLength <= index || index < 0){
-        return NULL;
+        return '\0';
     }else{
         return stringContent[index];
     }
@@ -186,4 +192,8 @@ const int MyString::compare(const MyString &str) {
     if (stringLength == str.stringLength) return 0;
     else if (stringLength > str.stringLength) return 1;
     else return -1;
+}
+
+bool MyString::operator==(MyString &str) {
+    return !compare(str);
 }

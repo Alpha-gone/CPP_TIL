@@ -7,13 +7,17 @@
 #include "module/chapter04/Date.h"
 #include "module/starcraft/StarCraft.h"
 #include "module/chapter04/MyString.h"
+#include "module/chapter04/Complex.h"
 
 int main() {
-    MyString str("this is a very very long string");
+    Complex a(1.0, 2.0);
+    Complex b(3.0, -2.0);
+    Complex c(0.0, 0.0);
 
-    std::cout << "Location of first <very> in the string : " << str.find(0, "very") << "\n"
-                << "Location of second <very> in the string : " << str.find(
-                                                                    str.find(0, "very") + 1,
-                                                                        "very");
+
+    c = a * b + a / b + a + b;
+
+    c.println();
+
     return 0;
 }

@@ -12,6 +12,7 @@ class MyString {
     int memoryCapacity;
 
     public:
+        explicit MyString(int capacity);
         MyString(char c);
         MyString(const char* str);
         MyString(const MyString& str);
@@ -42,6 +43,8 @@ class MyString {
         const int find(int findFrom, char c);
 
         const int compare(const MyString& str);
+
+        bool operator==(MyString& str);
 };
 
 
